@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AF26CACE-B287-4514-841F-0A017C2849FD}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>UIMedAssistPatient</RootNamespace>
+    <AssemblyName>UIMedAssistPatient</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FormAPIPatient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAPIPatient.Designer.cs">
+      <DependentUpon>FormAPIPatient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormUIEditerDateHeure.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUIEditerDateHeure.Designer.cs">
+      <DependentUpon>FormUIEditerDateHeure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormUIEditerRDV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUIEditerRDV.Designer.cs">
+      <DependentUpon>FormUIEditerRDV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormUIEditerRDVHeure.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUIEditerRDVHeure.Designer.cs">
+      <DependentUpon>FormUIEditerRDVHeure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormUIOptionEditionRDV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUIOptionEditionRDV.Designer.cs">
+      <DependentUpon>FormUIOptionEditionRDV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormUIPrendreRDVOption.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUIPrendreRDVOption.Designer.cs">
+      <DependentUpon>FormUIPrendreRDVOption.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormUIRDVMaisonMedical.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUIRDVMaisonMedical.Designer.cs">
+      <DependentUpon>FormUIRDVMaisonMedical.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormUIRDVMedecin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUIRDVMedecin.Designer.cs">
+      <DependentUpon>FormUIRDVMedecin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormUISupprimerRDV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUISupprimerRDV.Designer.cs">
+      <DependentUpon>FormUISupprimerRDV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormUIPatient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUIPatient.Designer.cs">
+      <DependentUpon>FormUIPatient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormUIPatientRecherche.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUIPatientRecherche.Designer.cs">
+      <DependentUpon>FormUIPatientRecherche.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormAPIPatient.resx">
+      <DependentUpon>FormAPIPatient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUIEditerDateHeure.resx">
+      <DependentUpon>FormUIEditerDateHeure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUIEditerRDV.resx">
+      <DependentUpon>FormUIEditerRDV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUIEditerRDVHeure.resx">
+      <DependentUpon>FormUIEditerRDVHeure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUIOptionEditionRDV.resx">
+      <DependentUpon>FormUIOptionEditionRDV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUIPrendreRDVOption.resx">
+      <DependentUpon>FormUIPrendreRDVOption.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUIPatient.resx">
+      <DependentUpon>FormUIPatient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUIPatientRecherche.resx">
+      <DependentUpon>FormUIPatientRecherche.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUIRDVMaisonMedical.resx">
+      <DependentUpon>FormUIRDVMaisonMedical.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUIRDVMedecin.resx">
+      <DependentUpon>FormUIRDVMedecin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUISupprimerRDV.resx">
+      <DependentUpon>FormUISupprimerRDV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLPatient\BLPatient.csproj">
+      <Project>{7ac39b75-fe96-4097-921e-ec923a9ef0f9}</Project>
+      <Name>BLPatient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CustomError\CustomError.csproj">
+      <Project>{16baf529-ce80-452b-b8b6-066892d69f4d}</Project>
+      <Name>CustomError</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{4e4349cb-99ed-4b6e-bc1e-c242d3b67ee6}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

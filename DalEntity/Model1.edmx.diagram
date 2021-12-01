@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8b2ed090368c494499d5f3a6d9a69d04" Name="Diagram1">
+        <EntityTypeShape EntityType="MedAssistModel.Consultation" Width="1.5" PointX="10.5" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedAssistModel.DispoLocal" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedAssistModel.Locaux" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedAssistModel.MaisonMedical" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedAssistModel.Medecin" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedAssistModel.MEDSpecialite" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedAssistModel.Patient" Width="1.5" PointX="8.25" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedAssistModel.PlanningMED" Width="1.5" PointX="8.25" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedAssistModel.PlanningRDV" Width="1.5" PointX="8.25" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedAssistModel.RDVConfirme" Width="1.5" PointX="12.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedAssistModel.RendezVous" Width="1.5" PointX="10.5" PointY="6.375" IsExpanded="true" />
+        <AssociationConnector Association="MedAssistModel.FK_Consultation_MEDSpecialite" ManuallyRouted="false" />
+        <AssociationConnector Association="MedAssistModel.FK_Consultation_PlanningMED" ManuallyRouted="false" />
+        <AssociationConnector Association="MedAssistModel.FK__DispoLoca__IDLoc__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="MedAssistModel.FK__Locaux__IDMaison__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="MedAssistModel.FK__PlanningR__IDLoc__2F10007B" ManuallyRouted="false" />
+        <AssociationConnector Association="MedAssistModel.FK_PlanningMED_MaisonMedical" ManuallyRouted="false" />
+        <AssociationConnector Association="MedAssistModel.FK__PlanningM__IDMed__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="MedAssistModel.FK__PlanningR__IDMed__300424B4" ManuallyRouted="false" />
+        <AssociationConnector Association="MedAssistModel.FK__RDVConfir__IDMed__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="MedAssistModel.FK__RendezVou__IDPat__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="MedAssistModel.FK__RendezVou__IDPla__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="MedAssistModel.FK__RDVConfir__IDRen__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="MedAssistModel.Emploie" ManuallyRouted="false" />
+        <AssociationConnector Association="MedAssistModel.Specialise" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

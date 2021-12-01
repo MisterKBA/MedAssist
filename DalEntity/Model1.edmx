@@ -1,0 +1,1064 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MedAssistModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Consultation">
+          <Key>
+            <PropertyRef Name="IDConsultation" />
+          </Key>
+          <Property Name="IDConsultation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DebutConsulation" Type="time" Precision="7" />
+          <Property Name="FinConsultation" Type="time" Precision="7" />
+          <Property Name="IDPlanningMED" Type="int" Nullable="false" />
+          <Property Name="IDSPecialite" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DispoLocal">
+          <Key>
+            <PropertyRef Name="IDDispo" />
+          </Key>
+          <Property Name="IDDispo" Type="int" Nullable="false" />
+          <Property Name="DateIndispo" Type="date" />
+          <Property Name="HeureDebutIndispo" Type="time" Precision="7" />
+          <Property Name="HeureFinIndispo" Type="time" Precision="7" />
+          <Property Name="IDLocal" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Emploie">
+          <Key>
+            <PropertyRef Name="IDMaisonM" />
+            <PropertyRef Name="IDMedecin" />
+          </Key>
+          <Property Name="IDMaisonM" Type="int" Nullable="false" />
+          <Property Name="IDMedecin" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Locaux">
+          <Key>
+            <PropertyRef Name="IDLocal" />
+          </Key>
+          <Property Name="IDLocal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom" Type="varchar" MaxLength="50" />
+          <Property Name="IDMaisonM" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MaisonMedical">
+          <Key>
+            <PropertyRef Name="IDMaisonM" />
+          </Key>
+          <Property Name="IDMaisonM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Medecin">
+          <Key>
+            <PropertyRef Name="IDMedecin" />
+          </Key>
+          <Property Name="IDMedecin" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom" Type="varchar" MaxLength="50" />
+          <Property Name="Prenom" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MEDSpecialite">
+          <Key>
+            <PropertyRef Name="IDSPecialite" />
+          </Key>
+          <Property Name="IDSPecialite" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom" Type="varchar" MaxLength="50" />
+          <Property Name="DureeExamenEnMinute" Type="int" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="IDPatient" />
+          </Key>
+          <Property Name="IDPatient" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom" Type="varchar" MaxLength="50" />
+          <Property Name="Prenom" Type="varchar" MaxLength="50" />
+          <Property Name="DateDeNaissance" Type="date" />
+        </EntityType>
+        <EntityType Name="PlanningMED">
+          <Key>
+            <PropertyRef Name="IDPlanningMED" />
+          </Key>
+          <Property Name="IDPlanningMED" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JourDePressence" Type="date" Nullable="false" />
+          <Property Name="HeureDebutJournee" Type="time" Precision="7" Nullable="false" />
+          <Property Name="HeureFinJournee" Type="time" Precision="7" Nullable="false" />
+          <Property Name="IDMedecin" Type="int" Nullable="false" />
+          <Property Name="IDMaIsonM" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PlanningRDV">
+          <Key>
+            <PropertyRef Name="IDPlanningRDV" />
+          </Key>
+          <Property Name="IDPlanningRDV" Type="int" Nullable="false" />
+          <Property Name="DateRDV" Type="date" Nullable="false" />
+          <Property Name="HeureRDV" Type="time" Precision="7" />
+          <Property Name="IDLocal" Type="int" Nullable="false" />
+          <Property Name="IDMedecin" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RDVConfirme">
+          <Key>
+            <PropertyRef Name="IDConfirmation" />
+          </Key>
+          <Property Name="IDConfirmation" Type="int" Nullable="false" />
+          <Property Name="Confirme" Type="int" />
+          <Property Name="IDMedecin" Type="int" Nullable="false" />
+          <Property Name="IDRendezVous" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RendezVous">
+          <Key>
+            <PropertyRef Name="IDRendezVous" />
+          </Key>
+          <Property Name="IDRendezVous" Type="int" Nullable="false" />
+          <Property Name="NoRDV" Type="varchar" MaxLength="50" />
+          <Property Name="IDPatient" Type="int" Nullable="false" />
+          <Property Name="IDPlanningRDV" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Specialise">
+          <Key>
+            <PropertyRef Name="IDMedecin" />
+            <PropertyRef Name="IDSPecialite" />
+          </Key>
+          <Property Name="IDMedecin" Type="int" Nullable="false" />
+          <Property Name="IDSPecialite" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__DispoLoca__IDLoc__38996AB5">
+          <End Role="Locaux" Type="Self.Locaux" Multiplicity="1" />
+          <End Role="DispoLocal" Type="Self.DispoLocal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Locaux">
+              <PropertyRef Name="IDLocal" />
+            </Principal>
+            <Dependent Role="DispoLocal">
+              <PropertyRef Name="IDLocal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Emploie__IDMaiso__48CFD27E">
+          <End Role="MaisonMedical" Type="Self.MaisonMedical" Multiplicity="1" />
+          <End Role="Emploie" Type="Self.Emploie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaisonMedical">
+              <PropertyRef Name="IDMaisonM" />
+            </Principal>
+            <Dependent Role="Emploie">
+              <PropertyRef Name="IDMaisonM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Emploie__IDMedec__49C3F6B7">
+          <End Role="Medecin" Type="Self.Medecin" Multiplicity="1" />
+          <End Role="Emploie" Type="Self.Emploie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medecin">
+              <PropertyRef Name="IDMedecin" />
+            </Principal>
+            <Dependent Role="Emploie">
+              <PropertyRef Name="IDMedecin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Locaux__IDMaison__2A4B4B5E">
+          <End Role="MaisonMedical" Type="Self.MaisonMedical" Multiplicity="1" />
+          <End Role="Locaux" Type="Self.Locaux" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaisonMedical">
+              <PropertyRef Name="IDMaisonM" />
+            </Principal>
+            <Dependent Role="Locaux">
+              <PropertyRef Name="IDMaisonM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PlanningM__IDMed__32E0915F">
+          <End Role="Medecin" Type="Self.Medecin" Multiplicity="1" />
+          <End Role="PlanningMED" Type="Self.PlanningMED" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medecin">
+              <PropertyRef Name="IDMedecin" />
+            </Principal>
+            <Dependent Role="PlanningMED">
+              <PropertyRef Name="IDMedecin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PlanningR__IDLoc__2F10007B">
+          <End Role="Locaux" Type="Self.Locaux" Multiplicity="1" />
+          <End Role="PlanningRDV" Type="Self.PlanningRDV" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Locaux">
+              <PropertyRef Name="IDLocal" />
+            </Principal>
+            <Dependent Role="PlanningRDV">
+              <PropertyRef Name="IDLocal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PlanningR__IDMed__300424B4">
+          <End Role="Medecin" Type="Self.Medecin" Multiplicity="1" />
+          <End Role="PlanningRDV" Type="Self.PlanningRDV" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medecin">
+              <PropertyRef Name="IDMedecin" />
+            </Principal>
+            <Dependent Role="PlanningRDV">
+              <PropertyRef Name="IDMedecin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RDVConfir__IDMed__412EB0B6">
+          <End Role="Medecin" Type="Self.Medecin" Multiplicity="1" />
+          <End Role="RDVConfirme" Type="Self.RDVConfirme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medecin">
+              <PropertyRef Name="IDMedecin" />
+            </Principal>
+            <Dependent Role="RDVConfirme">
+              <PropertyRef Name="IDMedecin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RDVConfir__IDRen__4222D4EF">
+          <End Role="RendezVous" Type="Self.RendezVous" Multiplicity="1" />
+          <End Role="RDVConfirme" Type="Self.RDVConfirme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RendezVous">
+              <PropertyRef Name="IDRendezVous" />
+            </Principal>
+            <Dependent Role="RDVConfirme">
+              <PropertyRef Name="IDRendezVous" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RendezVou__IDPat__3C69FB99">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+          <End Role="RendezVous" Type="Self.RendezVous" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="IDPatient" />
+            </Principal>
+            <Dependent Role="RendezVous">
+              <PropertyRef Name="IDPatient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RendezVou__IDPla__3D5E1FD2">
+          <End Role="PlanningRDV" Type="Self.PlanningRDV" Multiplicity="1" />
+          <End Role="RendezVous" Type="Self.RendezVous" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlanningRDV">
+              <PropertyRef Name="IDPlanningRDV" />
+            </Principal>
+            <Dependent Role="RendezVous">
+              <PropertyRef Name="IDPlanningRDV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Specialis__IDMed__44FF419A">
+          <End Role="Medecin" Type="Self.Medecin" Multiplicity="1" />
+          <End Role="Specialise" Type="Self.Specialise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medecin">
+              <PropertyRef Name="IDMedecin" />
+            </Principal>
+            <Dependent Role="Specialise">
+              <PropertyRef Name="IDMedecin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Specialis__IDSPe__45F365D3">
+          <End Role="MEDSpecialite" Type="Self.MEDSpecialite" Multiplicity="1" />
+          <End Role="Specialise" Type="Self.Specialise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MEDSpecialite">
+              <PropertyRef Name="IDSPecialite" />
+            </Principal>
+            <Dependent Role="Specialise">
+              <PropertyRef Name="IDSPecialite" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Consultation_MEDSpecialite">
+          <End Role="MEDSpecialite" Type="Self.MEDSpecialite" Multiplicity="1" />
+          <End Role="Consultation" Type="Self.Consultation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MEDSpecialite">
+              <PropertyRef Name="IDSPecialite" />
+            </Principal>
+            <Dependent Role="Consultation">
+              <PropertyRef Name="IDSPecialite" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Consultation_PlanningMED">
+          <End Role="PlanningMED" Type="Self.PlanningMED" Multiplicity="1" />
+          <End Role="Consultation" Type="Self.Consultation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlanningMED">
+              <PropertyRef Name="IDPlanningMED" />
+            </Principal>
+            <Dependent Role="Consultation">
+              <PropertyRef Name="IDPlanningMED" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlanningMED_MaisonMedical">
+          <End Role="MaisonMedical" Type="Self.MaisonMedical" Multiplicity="1" />
+          <End Role="PlanningMED" Type="Self.PlanningMED" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaisonMedical">
+              <PropertyRef Name="IDMaisonM" />
+            </Principal>
+            <Dependent Role="PlanningMED">
+              <PropertyRef Name="IDMaIsonM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="AddMaisonMedicale" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nom" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="AddMedecin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nom" Type="varchar" Mode="In" />
+          <Parameter Name="Prenom" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ReturnTime" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SelectAllMaisonMedicale" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SelectAllMaisonMedicaleLocal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SelectAllMedecin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SelectAllMedecinSpecialite" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SelectAllPlanning" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SelectAllspecialite" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SelectDateBySpecilaite" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SelectHeureConsultationByDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SelectPlanningMedecinById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="MedAssistModelStoreContainer">
+          <EntitySet Name="Consultation" EntityType="Self.Consultation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DispoLocal" EntityType="Self.DispoLocal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Emploie" EntityType="Self.Emploie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Locaux" EntityType="Self.Locaux" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MaisonMedical" EntityType="Self.MaisonMedical" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Medecin" EntityType="Self.Medecin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MEDSpecialite" EntityType="Self.MEDSpecialite" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlanningMED" EntityType="Self.PlanningMED" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlanningRDV" EntityType="Self.PlanningRDV" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RDVConfirme" EntityType="Self.RDVConfirme" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RendezVous" EntityType="Self.RendezVous" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Specialise" EntityType="Self.Specialise" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__DispoLoca__IDLoc__38996AB5" Association="Self.FK__DispoLoca__IDLoc__38996AB5">
+            <End Role="Locaux" EntitySet="Locaux" />
+            <End Role="DispoLocal" EntitySet="DispoLocal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Emploie__IDMaiso__48CFD27E" Association="Self.FK__Emploie__IDMaiso__48CFD27E">
+            <End Role="MaisonMedical" EntitySet="MaisonMedical" />
+            <End Role="Emploie" EntitySet="Emploie" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Emploie__IDMedec__49C3F6B7" Association="Self.FK__Emploie__IDMedec__49C3F6B7">
+            <End Role="Medecin" EntitySet="Medecin" />
+            <End Role="Emploie" EntitySet="Emploie" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Locaux__IDMaison__2A4B4B5E" Association="Self.FK__Locaux__IDMaison__2A4B4B5E">
+            <End Role="MaisonMedical" EntitySet="MaisonMedical" />
+            <End Role="Locaux" EntitySet="Locaux" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PlanningM__IDMed__32E0915F" Association="Self.FK__PlanningM__IDMed__32E0915F">
+            <End Role="Medecin" EntitySet="Medecin" />
+            <End Role="PlanningMED" EntitySet="PlanningMED" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PlanningR__IDLoc__2F10007B" Association="Self.FK__PlanningR__IDLoc__2F10007B">
+            <End Role="Locaux" EntitySet="Locaux" />
+            <End Role="PlanningRDV" EntitySet="PlanningRDV" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PlanningR__IDMed__300424B4" Association="Self.FK__PlanningR__IDMed__300424B4">
+            <End Role="Medecin" EntitySet="Medecin" />
+            <End Role="PlanningRDV" EntitySet="PlanningRDV" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RDVConfir__IDMed__412EB0B6" Association="Self.FK__RDVConfir__IDMed__412EB0B6">
+            <End Role="Medecin" EntitySet="Medecin" />
+            <End Role="RDVConfirme" EntitySet="RDVConfirme" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RDVConfir__IDRen__4222D4EF" Association="Self.FK__RDVConfir__IDRen__4222D4EF">
+            <End Role="RendezVous" EntitySet="RendezVous" />
+            <End Role="RDVConfirme" EntitySet="RDVConfirme" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RendezVou__IDPat__3C69FB99" Association="Self.FK__RendezVou__IDPat__3C69FB99">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="RendezVous" EntitySet="RendezVous" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RendezVou__IDPla__3D5E1FD2" Association="Self.FK__RendezVou__IDPla__3D5E1FD2">
+            <End Role="PlanningRDV" EntitySet="PlanningRDV" />
+            <End Role="RendezVous" EntitySet="RendezVous" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Specialis__IDMed__44FF419A" Association="Self.FK__Specialis__IDMed__44FF419A">
+            <End Role="Medecin" EntitySet="Medecin" />
+            <End Role="Specialise" EntitySet="Specialise" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Specialis__IDSPe__45F365D3" Association="Self.FK__Specialis__IDSPe__45F365D3">
+            <End Role="MEDSpecialite" EntitySet="MEDSpecialite" />
+            <End Role="Specialise" EntitySet="Specialise" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Consultation_MEDSpecialite" Association="Self.FK_Consultation_MEDSpecialite">
+            <End Role="MEDSpecialite" EntitySet="MEDSpecialite" />
+            <End Role="Consultation" EntitySet="Consultation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Consultation_PlanningMED" Association="Self.FK_Consultation_PlanningMED">
+            <End Role="PlanningMED" EntitySet="PlanningMED" />
+            <End Role="Consultation" EntitySet="Consultation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlanningMED_MaisonMedical" Association="Self.FK_PlanningMED_MaisonMedical">
+            <End Role="MaisonMedical" EntitySet="MaisonMedical" />
+            <End Role="PlanningMED" EntitySet="PlanningMED" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MedAssistModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Consultation">
+          <Key>
+            <PropertyRef Name="IDConsultation" />
+          </Key>
+          <Property Name="IDConsultation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DebutConsulation" Type="Time" Precision="7" />
+          <Property Name="FinConsultation" Type="Time" Precision="7" />
+          <Property Name="IDPlanningMED" Type="Int32" Nullable="false" />
+          <Property Name="IDSPecialite" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="MEDSpecialite" Relationship="Self.FK_Consultation_MEDSpecialite" FromRole="Consultation" ToRole="MEDSpecialite" />
+          <NavigationProperty Name="PlanningMED" Relationship="Self.FK_Consultation_PlanningMED" FromRole="Consultation" ToRole="PlanningMED" />
+        </EntityType>
+        <EntityType Name="DispoLocal">
+          <Key>
+            <PropertyRef Name="IDDispo" />
+          </Key>
+          <Property Name="IDDispo" Type="Int32" Nullable="false" />
+          <Property Name="DateIndispo" Type="DateTime" Precision="0" />
+          <Property Name="HeureDebutIndispo" Type="Time" Precision="7" />
+          <Property Name="HeureFinIndispo" Type="Time" Precision="7" />
+          <Property Name="IDLocal" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Locaux" Relationship="Self.FK__DispoLoca__IDLoc__38996AB5" FromRole="DispoLocal" ToRole="Locaux" />
+        </EntityType>
+        <EntityType Name="Locaux">
+          <Key>
+            <PropertyRef Name="IDLocal" />
+          </Key>
+          <Property Name="IDLocal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IDMaisonM" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DispoLocal" Relationship="Self.FK__DispoLoca__IDLoc__38996AB5" FromRole="Locaux" ToRole="DispoLocal" />
+          <NavigationProperty Name="MaisonMedical" Relationship="Self.FK__Locaux__IDMaison__2A4B4B5E" FromRole="Locaux" ToRole="MaisonMedical" />
+          <NavigationProperty Name="PlanningRDV" Relationship="Self.FK__PlanningR__IDLoc__2F10007B" FromRole="Locaux" ToRole="PlanningRDV" />
+        </EntityType>
+        <EntityType Name="MaisonMedical">
+          <Key>
+            <PropertyRef Name="IDMaisonM" />
+          </Key>
+          <Property Name="IDMaisonM" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Locaux" Relationship="Self.FK__Locaux__IDMaison__2A4B4B5E" FromRole="MaisonMedical" ToRole="Locaux" />
+          <NavigationProperty Name="PlanningMED" Relationship="Self.FK_PlanningMED_MaisonMedical" FromRole="MaisonMedical" ToRole="PlanningMED" />
+          <NavigationProperty Name="Medecin" Relationship="Self.Emploie" FromRole="MaisonMedical" ToRole="Medecin" />
+        </EntityType>
+        <EntityType Name="Medecin">
+          <Key>
+            <PropertyRef Name="IDMedecin" />
+          </Key>
+          <Property Name="IDMedecin" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PlanningMED" Relationship="Self.FK__PlanningM__IDMed__32E0915F" FromRole="Medecin" ToRole="PlanningMED" />
+          <NavigationProperty Name="PlanningRDV" Relationship="Self.FK__PlanningR__IDMed__300424B4" FromRole="Medecin" ToRole="PlanningRDV" />
+          <NavigationProperty Name="RDVConfirme" Relationship="Self.FK__RDVConfir__IDMed__412EB0B6" FromRole="Medecin" ToRole="RDVConfirme" />
+          <NavigationProperty Name="MaisonMedical" Relationship="Self.Emploie" FromRole="Medecin" ToRole="MaisonMedical" />
+          <NavigationProperty Name="MEDSpecialite" Relationship="Self.Specialise" FromRole="Medecin" ToRole="MEDSpecialite" />
+        </EntityType>
+        <EntityType Name="MEDSpecialite">
+          <Key>
+            <PropertyRef Name="IDSPecialite" />
+          </Key>
+          <Property Name="IDSPecialite" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DureeExamenEnMinute" Type="Int32" />
+          <NavigationProperty Name="Consultation" Relationship="Self.FK_Consultation_MEDSpecialite" FromRole="MEDSpecialite" ToRole="Consultation" />
+          <NavigationProperty Name="Medecin" Relationship="Self.Specialise" FromRole="MEDSpecialite" ToRole="Medecin" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="IDPatient" />
+          </Key>
+          <Property Name="IDPatient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateDeNaissance" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="RendezVous" Relationship="Self.FK__RendezVou__IDPat__3C69FB99" FromRole="Patient" ToRole="RendezVous" />
+        </EntityType>
+        <EntityType Name="PlanningMED">
+          <Key>
+            <PropertyRef Name="IDPlanningMED" />
+          </Key>
+          <Property Name="IDPlanningMED" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JourDePressence" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="HeureDebutJournee" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="HeureFinJournee" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="IDMedecin" Type="Int32" Nullable="false" />
+          <Property Name="IDMaIsonM" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Consultation" Relationship="Self.FK_Consultation_PlanningMED" FromRole="PlanningMED" ToRole="Consultation" />
+          <NavigationProperty Name="MaisonMedical" Relationship="Self.FK_PlanningMED_MaisonMedical" FromRole="PlanningMED" ToRole="MaisonMedical" />
+          <NavigationProperty Name="Medecin" Relationship="Self.FK__PlanningM__IDMed__32E0915F" FromRole="PlanningMED" ToRole="Medecin" />
+        </EntityType>
+        <EntityType Name="PlanningRDV">
+          <Key>
+            <PropertyRef Name="IDPlanningRDV" />
+          </Key>
+          <Property Name="IDPlanningRDV" Type="Int32" Nullable="false" />
+          <Property Name="DateRDV" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="HeureRDV" Type="Time" Precision="7" />
+          <Property Name="IDLocal" Type="Int32" Nullable="false" />
+          <Property Name="IDMedecin" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Locaux" Relationship="Self.FK__PlanningR__IDLoc__2F10007B" FromRole="PlanningRDV" ToRole="Locaux" />
+          <NavigationProperty Name="Medecin" Relationship="Self.FK__PlanningR__IDMed__300424B4" FromRole="PlanningRDV" ToRole="Medecin" />
+          <NavigationProperty Name="RendezVous" Relationship="Self.FK__RendezVou__IDPla__3D5E1FD2" FromRole="PlanningRDV" ToRole="RendezVous" />
+        </EntityType>
+        <EntityType Name="RDVConfirme">
+          <Key>
+            <PropertyRef Name="IDConfirmation" />
+          </Key>
+          <Property Name="IDConfirmation" Type="Int32" Nullable="false" />
+          <Property Name="Confirme" Type="Int32" />
+          <Property Name="IDMedecin" Type="Int32" Nullable="false" />
+          <Property Name="IDRendezVous" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Medecin" Relationship="Self.FK__RDVConfir__IDMed__412EB0B6" FromRole="RDVConfirme" ToRole="Medecin" />
+          <NavigationProperty Name="RendezVous" Relationship="Self.FK__RDVConfir__IDRen__4222D4EF" FromRole="RDVConfirme" ToRole="RendezVous" />
+        </EntityType>
+        <EntityType Name="RendezVous">
+          <Key>
+            <PropertyRef Name="IDRendezVous" />
+          </Key>
+          <Property Name="IDRendezVous" Type="Int32" Nullable="false" />
+          <Property Name="NoRDV" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IDPatient" Type="Int32" Nullable="false" />
+          <Property Name="IDPlanningRDV" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK__RendezVou__IDPat__3C69FB99" FromRole="RendezVous" ToRole="Patient" />
+          <NavigationProperty Name="PlanningRDV" Relationship="Self.FK__RendezVou__IDPla__3D5E1FD2" FromRole="RendezVous" ToRole="PlanningRDV" />
+          <NavigationProperty Name="RDVConfirme" Relationship="Self.FK__RDVConfir__IDRen__4222D4EF" FromRole="RendezVous" ToRole="RDVConfirme" />
+        </EntityType>
+        <Association Name="FK_Consultation_MEDSpecialite">
+          <End Role="MEDSpecialite" Type="Self.MEDSpecialite" Multiplicity="1" />
+          <End Role="Consultation" Type="Self.Consultation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MEDSpecialite">
+              <PropertyRef Name="IDSPecialite" />
+            </Principal>
+            <Dependent Role="Consultation">
+              <PropertyRef Name="IDSPecialite" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Consultation_PlanningMED">
+          <End Role="PlanningMED" Type="Self.PlanningMED" Multiplicity="1" />
+          <End Role="Consultation" Type="Self.Consultation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlanningMED">
+              <PropertyRef Name="IDPlanningMED" />
+            </Principal>
+            <Dependent Role="Consultation">
+              <PropertyRef Name="IDPlanningMED" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DispoLoca__IDLoc__38996AB5">
+          <End Role="Locaux" Type="Self.Locaux" Multiplicity="1" />
+          <End Role="DispoLocal" Type="Self.DispoLocal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Locaux">
+              <PropertyRef Name="IDLocal" />
+            </Principal>
+            <Dependent Role="DispoLocal">
+              <PropertyRef Name="IDLocal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Locaux__IDMaison__2A4B4B5E">
+          <End Role="MaisonMedical" Type="Self.MaisonMedical" Multiplicity="1" />
+          <End Role="Locaux" Type="Self.Locaux" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaisonMedical">
+              <PropertyRef Name="IDMaisonM" />
+            </Principal>
+            <Dependent Role="Locaux">
+              <PropertyRef Name="IDMaisonM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PlanningR__IDLoc__2F10007B">
+          <End Role="Locaux" Type="Self.Locaux" Multiplicity="1" />
+          <End Role="PlanningRDV" Type="Self.PlanningRDV" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Locaux">
+              <PropertyRef Name="IDLocal" />
+            </Principal>
+            <Dependent Role="PlanningRDV">
+              <PropertyRef Name="IDLocal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlanningMED_MaisonMedical">
+          <End Role="MaisonMedical" Type="Self.MaisonMedical" Multiplicity="1" />
+          <End Role="PlanningMED" Type="Self.PlanningMED" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaisonMedical">
+              <PropertyRef Name="IDMaisonM" />
+            </Principal>
+            <Dependent Role="PlanningMED">
+              <PropertyRef Name="IDMaIsonM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PlanningM__IDMed__32E0915F">
+          <End Role="Medecin" Type="Self.Medecin" Multiplicity="1" />
+          <End Role="PlanningMED" Type="Self.PlanningMED" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medecin">
+              <PropertyRef Name="IDMedecin" />
+            </Principal>
+            <Dependent Role="PlanningMED">
+              <PropertyRef Name="IDMedecin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PlanningR__IDMed__300424B4">
+          <End Role="Medecin" Type="Self.Medecin" Multiplicity="1" />
+          <End Role="PlanningRDV" Type="Self.PlanningRDV" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medecin">
+              <PropertyRef Name="IDMedecin" />
+            </Principal>
+            <Dependent Role="PlanningRDV">
+              <PropertyRef Name="IDMedecin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RDVConfir__IDMed__412EB0B6">
+          <End Role="Medecin" Type="Self.Medecin" Multiplicity="1" />
+          <End Role="RDVConfirme" Type="Self.RDVConfirme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medecin">
+              <PropertyRef Name="IDMedecin" />
+            </Principal>
+            <Dependent Role="RDVConfirme">
+              <PropertyRef Name="IDMedecin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RendezVou__IDPat__3C69FB99">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+          <End Role="RendezVous" Type="Self.RendezVous" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="IDPatient" />
+            </Principal>
+            <Dependent Role="RendezVous">
+              <PropertyRef Name="IDPatient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RendezVou__IDPla__3D5E1FD2">
+          <End Role="PlanningRDV" Type="Self.PlanningRDV" Multiplicity="1" />
+          <End Role="RendezVous" Type="Self.RendezVous" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlanningRDV">
+              <PropertyRef Name="IDPlanningRDV" />
+            </Principal>
+            <Dependent Role="RendezVous">
+              <PropertyRef Name="IDPlanningRDV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RDVConfir__IDRen__4222D4EF">
+          <End Role="RendezVous" Type="Self.RendezVous" Multiplicity="1" />
+          <End Role="RDVConfirme" Type="Self.RDVConfirme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RendezVous">
+              <PropertyRef Name="IDRendezVous" />
+            </Principal>
+            <Dependent Role="RDVConfirme">
+              <PropertyRef Name="IDRendezVous" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Emploie">
+          <End Role="MaisonMedical" Type="Self.MaisonMedical" Multiplicity="*" />
+          <End Role="Medecin" Type="Self.Medecin" Multiplicity="*" />
+        </Association>
+        <Association Name="Specialise">
+          <End Role="Medecin" Type="Self.Medecin" Multiplicity="*" />
+          <End Role="MEDSpecialite" Type="Self.MEDSpecialite" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="MedAssistEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Consultation" EntityType="Self.Consultation" />
+          <EntitySet Name="DispoLocal" EntityType="Self.DispoLocal" />
+          <EntitySet Name="Locaux" EntityType="Self.Locaux" />
+          <EntitySet Name="MaisonMedical" EntityType="Self.MaisonMedical" />
+          <EntitySet Name="Medecin" EntityType="Self.Medecin" />
+          <EntitySet Name="MEDSpecialite" EntityType="Self.MEDSpecialite" />
+          <EntitySet Name="Patient" EntityType="Self.Patient" />
+          <EntitySet Name="PlanningMED" EntityType="Self.PlanningMED" />
+          <EntitySet Name="PlanningRDV" EntityType="Self.PlanningRDV" />
+          <EntitySet Name="RDVConfirme" EntityType="Self.RDVConfirme" />
+          <EntitySet Name="RendezVous" EntityType="Self.RendezVous" />
+          <AssociationSet Name="FK_Consultation_MEDSpecialite" Association="Self.FK_Consultation_MEDSpecialite">
+            <End Role="MEDSpecialite" EntitySet="MEDSpecialite" />
+            <End Role="Consultation" EntitySet="Consultation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Consultation_PlanningMED" Association="Self.FK_Consultation_PlanningMED">
+            <End Role="PlanningMED" EntitySet="PlanningMED" />
+            <End Role="Consultation" EntitySet="Consultation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DispoLoca__IDLoc__38996AB5" Association="Self.FK__DispoLoca__IDLoc__38996AB5">
+            <End Role="Locaux" EntitySet="Locaux" />
+            <End Role="DispoLocal" EntitySet="DispoLocal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Locaux__IDMaison__2A4B4B5E" Association="Self.FK__Locaux__IDMaison__2A4B4B5E">
+            <End Role="MaisonMedical" EntitySet="MaisonMedical" />
+            <End Role="Locaux" EntitySet="Locaux" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PlanningR__IDLoc__2F10007B" Association="Self.FK__PlanningR__IDLoc__2F10007B">
+            <End Role="Locaux" EntitySet="Locaux" />
+            <End Role="PlanningRDV" EntitySet="PlanningRDV" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlanningMED_MaisonMedical" Association="Self.FK_PlanningMED_MaisonMedical">
+            <End Role="MaisonMedical" EntitySet="MaisonMedical" />
+            <End Role="PlanningMED" EntitySet="PlanningMED" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PlanningM__IDMed__32E0915F" Association="Self.FK__PlanningM__IDMed__32E0915F">
+            <End Role="Medecin" EntitySet="Medecin" />
+            <End Role="PlanningMED" EntitySet="PlanningMED" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PlanningR__IDMed__300424B4" Association="Self.FK__PlanningR__IDMed__300424B4">
+            <End Role="Medecin" EntitySet="Medecin" />
+            <End Role="PlanningRDV" EntitySet="PlanningRDV" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RDVConfir__IDMed__412EB0B6" Association="Self.FK__RDVConfir__IDMed__412EB0B6">
+            <End Role="Medecin" EntitySet="Medecin" />
+            <End Role="RDVConfirme" EntitySet="RDVConfirme" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RendezVou__IDPat__3C69FB99" Association="Self.FK__RendezVou__IDPat__3C69FB99">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="RendezVous" EntitySet="RendezVous" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RendezVou__IDPla__3D5E1FD2" Association="Self.FK__RendezVou__IDPla__3D5E1FD2">
+            <End Role="PlanningRDV" EntitySet="PlanningRDV" />
+            <End Role="RendezVous" EntitySet="RendezVous" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RDVConfir__IDRen__4222D4EF" Association="Self.FK__RDVConfir__IDRen__4222D4EF">
+            <End Role="RendezVous" EntitySet="RendezVous" />
+            <End Role="RDVConfirme" EntitySet="RDVConfirme" />
+          </AssociationSet>
+          <AssociationSet Name="Emploie" Association="Self.Emploie">
+            <End Role="MaisonMedical" EntitySet="MaisonMedical" />
+            <End Role="Medecin" EntitySet="Medecin" />
+          </AssociationSet>
+          <AssociationSet Name="Specialise" Association="Self.Specialise">
+            <End Role="Medecin" EntitySet="Medecin" />
+            <End Role="MEDSpecialite" EntitySet="MEDSpecialite" />
+          </AssociationSet>
+          <FunctionImport Name="AddMaisonMedicale">
+            <Parameter Name="Nom" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AddMedecin">
+            <Parameter Name="Nom" Mode="In" Type="String" />
+            <Parameter Name="Prenom" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ReturnTime" ReturnType="Collection(MedAssistModel.ReturnTime_Result)" />
+          <FunctionImport Name="SelectAllMaisonMedicale" ReturnType="Collection(MedAssistModel.SelectAllMaisonMedicale_Result)" />
+          <FunctionImport Name="SelectAllMaisonMedicaleLocal" ReturnType="Collection(MedAssistModel.SelectAllMaisonMedicaleLocal_Result)" />
+          <FunctionImport Name="SelectAllMedecin" ReturnType="Collection(MedAssistModel.SelectAllMedecin_Result)" />
+          <FunctionImport Name="SelectAllMedecinSpecialite" ReturnType="Collection(MedAssistModel.SelectAllMedecinSpecialite_Result)" />
+          <FunctionImport Name="SelectAllPlanning" ReturnType="Collection(MedAssistModel.SelectAllPlanning_Result)" />
+          <FunctionImport Name="SelectAllspecialite" ReturnType="Collection(String)" />
+          <FunctionImport Name="SelectDateBySpecilaite" ReturnType="Collection(DateTime)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SelectHeureConsultationByDate" ReturnType="Collection(MedAssistModel.SelectHeureConsultationByDate_Result)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SelectPlanningMedecinById" ReturnType="Collection(MedAssistModel.SelectPlanningMedecinById_Result)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="ReturnTime_Result">
+          <Property Type="Time" Name="heure" Nullable="true" />
+          <Property Type="Time" Name="heurefin" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SelectAllMaisonMedicale_Result">
+          <Property Type="Int32" Name="IDMaisonM" Nullable="false" />
+          <Property Type="String" Name="Nom" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SelectAllMaisonMedicaleLocal_Result">
+          <Property Type="Int32" Name="IDMaisonM" Nullable="false" />
+          <Property Type="String" Name="Nom" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Local" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SelectAllMedecin_Result">
+          <Property Type="Int32" Name="IDMedecin" Nullable="false" />
+          <Property Type="String" Name="Nom" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Prenom" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SelectAllMedecinSpecialite_Result">
+          <Property Type="Int32" Name="IDMedecin" Nullable="false" />
+          <Property Type="String" Name="Nom" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Prenom" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="spécialité" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SelectAllPlanning_Result">
+          <Property Type="DateTime" Name="JourDePressence" Nullable="false" />
+          <Property Type="Time" Name="HeureDebutJournee" Nullable="false" />
+          <Property Type="Time" Name="HeureFinJournee" Nullable="false" />
+          <Property Type="String" Name="Nom" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Prenom" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SelectHeureConsultationByDate_Result">
+          <Property Type="Int32" Name="IDConsultation" Nullable="false" />
+          <Property Type="Time" Name="FinConsultation" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SelectPlanningMedecinById_Result">
+          <Property Type="DateTime" Name="JourDePressence" Nullable="false" />
+          <Property Type="Time" Name="HeureDebutJournee" Nullable="false" />
+          <Property Type="Time" Name="HeureFinJournee" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MedAssistModelStoreContainer" CdmEntityContainer="MedAssistEntities">
+          <EntitySetMapping Name="Consultation">
+            <EntityTypeMapping TypeName="MedAssistModel.Consultation">
+              <MappingFragment StoreEntitySet="Consultation">
+                <ScalarProperty Name="IDConsultation" ColumnName="IDConsultation" />
+                <ScalarProperty Name="DebutConsulation" ColumnName="DebutConsulation" />
+                <ScalarProperty Name="FinConsultation" ColumnName="FinConsultation" />
+                <ScalarProperty Name="IDPlanningMED" ColumnName="IDPlanningMED" />
+                <ScalarProperty Name="IDSPecialite" ColumnName="IDSPecialite" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DispoLocal">
+            <EntityTypeMapping TypeName="MedAssistModel.DispoLocal">
+              <MappingFragment StoreEntitySet="DispoLocal">
+                <ScalarProperty Name="IDDispo" ColumnName="IDDispo" />
+                <ScalarProperty Name="DateIndispo" ColumnName="DateIndispo" />
+                <ScalarProperty Name="HeureDebutIndispo" ColumnName="HeureDebutIndispo" />
+                <ScalarProperty Name="HeureFinIndispo" ColumnName="HeureFinIndispo" />
+                <ScalarProperty Name="IDLocal" ColumnName="IDLocal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locaux">
+            <EntityTypeMapping TypeName="MedAssistModel.Locaux">
+              <MappingFragment StoreEntitySet="Locaux">
+                <ScalarProperty Name="IDLocal" ColumnName="IDLocal" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="IDMaisonM" ColumnName="IDMaisonM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MaisonMedical">
+            <EntityTypeMapping TypeName="MedAssistModel.MaisonMedical">
+              <MappingFragment StoreEntitySet="MaisonMedical">
+                <ScalarProperty Name="IDMaisonM" ColumnName="IDMaisonM" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medecin">
+            <EntityTypeMapping TypeName="MedAssistModel.Medecin">
+              <MappingFragment StoreEntitySet="Medecin">
+                <ScalarProperty Name="IDMedecin" ColumnName="IDMedecin" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MEDSpecialite">
+            <EntityTypeMapping TypeName="MedAssistModel.MEDSpecialite">
+              <MappingFragment StoreEntitySet="MEDSpecialite">
+                <ScalarProperty Name="IDSPecialite" ColumnName="IDSPecialite" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="DureeExamenEnMinute" ColumnName="DureeExamenEnMinute" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Patient">
+            <EntityTypeMapping TypeName="MedAssistModel.Patient">
+              <MappingFragment StoreEntitySet="Patient">
+                <ScalarProperty Name="IDPatient" ColumnName="IDPatient" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+                <ScalarProperty Name="DateDeNaissance" ColumnName="DateDeNaissance" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlanningMED">
+            <EntityTypeMapping TypeName="MedAssistModel.PlanningMED">
+              <MappingFragment StoreEntitySet="PlanningMED">
+                <ScalarProperty Name="IDPlanningMED" ColumnName="IDPlanningMED" />
+                <ScalarProperty Name="JourDePressence" ColumnName="JourDePressence" />
+                <ScalarProperty Name="HeureDebutJournee" ColumnName="HeureDebutJournee" />
+                <ScalarProperty Name="HeureFinJournee" ColumnName="HeureFinJournee" />
+                <ScalarProperty Name="IDMedecin" ColumnName="IDMedecin" />
+                <ScalarProperty Name="IDMaIsonM" ColumnName="IDMaIsonM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlanningRDV">
+            <EntityTypeMapping TypeName="MedAssistModel.PlanningRDV">
+              <MappingFragment StoreEntitySet="PlanningRDV">
+                <ScalarProperty Name="IDPlanningRDV" ColumnName="IDPlanningRDV" />
+                <ScalarProperty Name="DateRDV" ColumnName="DateRDV" />
+                <ScalarProperty Name="HeureRDV" ColumnName="HeureRDV" />
+                <ScalarProperty Name="IDLocal" ColumnName="IDLocal" />
+                <ScalarProperty Name="IDMedecin" ColumnName="IDMedecin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RDVConfirme">
+            <EntityTypeMapping TypeName="MedAssistModel.RDVConfirme">
+              <MappingFragment StoreEntitySet="RDVConfirme">
+                <ScalarProperty Name="IDConfirmation" ColumnName="IDConfirmation" />
+                <ScalarProperty Name="Confirme" ColumnName="Confirme" />
+                <ScalarProperty Name="IDMedecin" ColumnName="IDMedecin" />
+                <ScalarProperty Name="IDRendezVous" ColumnName="IDRendezVous" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RendezVous">
+            <EntityTypeMapping TypeName="MedAssistModel.RendezVous">
+              <MappingFragment StoreEntitySet="RendezVous">
+                <ScalarProperty Name="IDRendezVous" ColumnName="IDRendezVous" />
+                <ScalarProperty Name="NoRDV" ColumnName="NoRDV" />
+                <ScalarProperty Name="IDPatient" ColumnName="IDPatient" />
+                <ScalarProperty Name="IDPlanningRDV" ColumnName="IDPlanningRDV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Emploie" TypeName="MedAssistModel.Emploie" StoreEntitySet="Emploie">
+            <EndProperty Name="MaisonMedical">
+              <ScalarProperty Name="IDMaisonM" ColumnName="IDMaisonM" />
+            </EndProperty>
+            <EndProperty Name="Medecin">
+              <ScalarProperty Name="IDMedecin" ColumnName="IDMedecin" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Specialise" TypeName="MedAssistModel.Specialise" StoreEntitySet="Specialise">
+            <EndProperty Name="Medecin">
+              <ScalarProperty Name="IDMedecin" ColumnName="IDMedecin" />
+            </EndProperty>
+            <EndProperty Name="MEDSpecialite">
+              <ScalarProperty Name="IDSPecialite" ColumnName="IDSPecialite" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="AddMaisonMedicale" FunctionName="MedAssistModel.Store.AddMaisonMedicale" />
+          <FunctionImportMapping FunctionImportName="AddMedecin" FunctionName="MedAssistModel.Store.AddMedecin" />
+          <FunctionImportMapping FunctionImportName="ReturnTime" FunctionName="MedAssistModel.Store.ReturnTime">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MedAssistModel.ReturnTime_Result">
+                <ScalarProperty Name="heure" ColumnName="heure" />
+                <ScalarProperty Name="heurefin" ColumnName="heurefin" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SelectAllMaisonMedicale" FunctionName="MedAssistModel.Store.SelectAllMaisonMedicale">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MedAssistModel.SelectAllMaisonMedicale_Result">
+                <ScalarProperty Name="IDMaisonM" ColumnName="IDMaisonM" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SelectAllMaisonMedicaleLocal" FunctionName="MedAssistModel.Store.SelectAllMaisonMedicaleLocal">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MedAssistModel.SelectAllMaisonMedicaleLocal_Result">
+                <ScalarProperty Name="IDMaisonM" ColumnName="IDMaisonM" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Local" ColumnName="Local" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SelectAllMedecin" FunctionName="MedAssistModel.Store.SelectAllMedecin">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MedAssistModel.SelectAllMedecin_Result">
+                <ScalarProperty Name="IDMedecin" ColumnName="IDMedecin" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SelectAllMedecinSpecialite" FunctionName="MedAssistModel.Store.SelectAllMedecinSpecialite">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MedAssistModel.SelectAllMedecinSpecialite_Result">
+                <ScalarProperty Name="IDMedecin" ColumnName="IDMedecin" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+                <ScalarProperty Name="spécialité" ColumnName="spécialité" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SelectAllPlanning" FunctionName="MedAssistModel.Store.SelectAllPlanning">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MedAssistModel.SelectAllPlanning_Result">
+                <ScalarProperty Name="JourDePressence" ColumnName="JourDePressence" />
+                <ScalarProperty Name="HeureDebutJournee" ColumnName="HeureDebutJournee" />
+                <ScalarProperty Name="HeureFinJournee" ColumnName="HeureFinJournee" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SelectAllspecialite" FunctionName="MedAssistModel.Store.SelectAllspecialite" />
+          <FunctionImportMapping FunctionImportName="SelectDateBySpecilaite" FunctionName="MedAssistModel.Store.SelectDateBySpecilaite" />
+          <FunctionImportMapping FunctionImportName="SelectHeureConsultationByDate" FunctionName="MedAssistModel.Store.SelectHeureConsultationByDate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MedAssistModel.SelectHeureConsultationByDate_Result">
+                <ScalarProperty Name="IDConsultation" ColumnName="IDConsultation" />
+                <ScalarProperty Name="FinConsultation" ColumnName="FinConsultation" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SelectPlanningMedecinById" FunctionName="MedAssistModel.Store.SelectPlanningMedecinById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MedAssistModel.SelectPlanningMedecinById_Result">
+                <ScalarProperty Name="JourDePressence" ColumnName="JourDePressence" />
+                <ScalarProperty Name="HeureDebutJournee" ColumnName="HeureDebutJournee" />
+                <ScalarProperty Name="HeureFinJournee" ColumnName="HeureFinJournee" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

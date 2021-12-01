@@ -1,0 +1,609 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MedAssistV2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="AddRDVConfirmation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Patient">
+          <Parameter Name="idRDV" Type="int" Mode="In" />
+          <Parameter Name="idMedecin" Type="int" Mode="In" />
+        </Function>
+        <Function Name="AddRDVMode1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Patient">
+          <Parameter Name="IdPatient" Type="int" Mode="In" />
+          <Parameter Name="IdMedecin" Type="int" Mode="In" />
+          <Parameter Name="IdMaison" Type="int" Mode="In" />
+          <Parameter Name="IdSpecialite" Type="int" Mode="In" />
+          <Parameter Name="date" Type="date" Mode="In" />
+          <Parameter Name="heure" Type="time" Mode="In" />
+        </Function>
+        <Function Name="DeleteRDVMode1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Patient">
+          <Parameter Name="anHeure" Type="time" Mode="In" />
+          <Parameter Name="idPlanninRDV" Type="int" Mode="In" />
+          <Parameter Name="idConsultation" Type="int" Mode="In" />
+          <Parameter Name="date" Type="date" Mode="In" />
+          <Parameter Name="idLocal" Type="int" Mode="In" />
+        </Function>
+        <Function Name="selectAllMaison" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Patient" />
+        <Function Name="selectAllMedecin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Patient" />
+        <Function Name="selectDatePresence" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Patient">
+          <Parameter Name="idMedecin" Type="int" Mode="In" />
+          <Parameter Name="idMaison" Type="int" Mode="In" />
+        </Function>
+        <Function Name="selectHeureConsulation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Patient">
+          <Parameter Name="date" Type="date" Mode="In" />
+          <Parameter Name="IdS" Type="int" Mode="In" />
+          <Parameter Name="IdM" Type="int" Mode="In" />
+        </Function>
+        <Function Name="selectHeureConsultationCons" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Patient">
+          <Parameter Name="date" Type="date" Mode="In" />
+          <Parameter Name="IdS" Type="int" Mode="In" />
+          <Parameter Name="IdM" Type="int" Mode="In" />
+        </Function>
+        <Function Name="selectHeureConsultationConsAp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Patient">
+          <Parameter Name="date" Type="date" Mode="In" />
+          <Parameter Name="IdMe" Type="int" Mode="In" />
+          <Parameter Name="IdM" Type="int" Mode="In" />
+        </Function>
+        <Function Name="selectHeureConsultationConsMat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Patient">
+          <Parameter Name="date" Type="date" Mode="In" />
+          <Parameter Name="IdMe" Type="int" Mode="In" />
+          <Parameter Name="IdM" Type="int" Mode="In" />
+        </Function>
+        <Function Name="selectHeureConsultationPlan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Patient">
+          <Parameter Name="date" Type="date" Mode="In" />
+          <Parameter Name="IdMe" Type="int" Mode="In" />
+          <Parameter Name="IdM" Type="int" Mode="In" />
+        </Function>
+        <Function Name="selectMaisonByMedecin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Patient">
+          <Parameter Name="idMedecin" Type="int" Mode="In" />
+        </Function>
+        <Function Name="selectMedecinByDateMaison" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Patient">
+          <Parameter Name="date" Type="date" Mode="In" />
+          <Parameter Name="IdM" Type="int" Mode="In" />
+        </Function>
+        <Function Name="selectMedecinCon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Patient">
+          <Parameter Name="date" Type="date" Mode="In" />
+          <Parameter Name="IdM" Type="int" Mode="In" />
+          <Parameter Name="IdS" Type="int" Mode="In" />
+        </Function>
+        <Function Name="selectMedecinPlan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Patient">
+          <Parameter Name="date" Type="date" Mode="In" />
+          <Parameter Name="IdM" Type="int" Mode="In" />
+          <Parameter Name="IdS" Type="int" Mode="In" />
+        </Function>
+        <Function Name="selectPatientById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Patient">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="selectPatientRDV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Patient">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="selectPatientRDVAndDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Patient">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="date" Type="date" Mode="In" />
+        </Function>
+        <Function Name="selectRDVPatientByPaHeDa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Patient">
+          <Parameter Name="idPatient" Type="int" Mode="In" />
+          <Parameter Name="date" Type="date" Mode="In" />
+          <Parameter Name="heure" Type="time" Mode="In" />
+        </Function>
+        <Function Name="selectSpecialiteByDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Patient">
+          <Parameter Name="date" Type="date" Mode="In" />
+          <Parameter Name="IdMaison" Type="int" Mode="In" />
+        </Function>
+        <Function Name="selectSpecialiteByMaisonMedecin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Patient">
+          <Parameter Name="idMedecin" Type="int" Mode="In" />
+          <Parameter Name="idMaison" Type="int" Mode="In" />
+        </Function>
+        <Function Name="selectSpecialiteMedecinByDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Patient">
+          <Parameter Name="date" Type="date" Mode="In" />
+          <Parameter Name="IdMaison" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UpdateRDVMode1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Patient">
+          <Parameter Name="anHeure" Type="time" Mode="In" />
+          <Parameter Name="idPlanninRDV" Type="int" Mode="In" />
+          <Parameter Name="idConsultation" Type="int" Mode="In" />
+          <Parameter Name="IdMedecin" Type="int" Mode="In" />
+          <Parameter Name="IdMaison" Type="int" Mode="In" />
+          <Parameter Name="IdSpecialite" Type="int" Mode="In" />
+          <Parameter Name="date" Type="date" Mode="In" />
+          <Parameter Name="heure" Type="time" Mode="In" />
+        </Function>
+        <Function Name="UpdateRDVMode2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Patient">
+          <Parameter Name="anHeure" Type="time" Mode="In" />
+          <Parameter Name="idPlanninRDV" Type="int" Mode="In" />
+          <Parameter Name="idConsultation" Type="int" Mode="In" />
+          <Parameter Name="IdMedecin" Type="int" Mode="In" />
+          <Parameter Name="IdMaison" Type="int" Mode="In" />
+          <Parameter Name="IdSpecialite" Type="int" Mode="In" />
+          <Parameter Name="date" Type="date" Mode="In" />
+          <Parameter Name="heure" Type="time" Mode="In" />
+          <Parameter Name="idPlanningMed" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="MedAssistV2ModelStoreContainer" />
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MedAssistV2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MedAssistV2Entities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="selectPatientById" ReturnType="Collection(MedAssistV2Model.selectPatientById_Result)">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="selectAllMaison" ReturnType="Collection(MedAssistV2Model.selectAllMaison_Result)" />
+          <FunctionImport Name="selectSpecialiteMedecinByDate" ReturnType="Collection(MedAssistV2Model.selectSpecialiteMedecinByDate_Result)">
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="IdMaison" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="selectSpecialiteByDate" ReturnType="Collection(MedAssistV2Model.selectSpecialiteByDate_Result)">
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="IdMaison" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="selectHeureConsulation" ReturnType="Collection(MedAssistV2Model.selectHeureConsulation_Result)">
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="IdS" Mode="In" Type="Int32" />
+            <Parameter Name="IdM" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="selectHeureConsultationCons" ReturnType="Collection(MedAssistV2Model.selectHeureConsultationCons_Result)">
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="IdS" Mode="In" Type="Int32" />
+            <Parameter Name="IdM" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="selectHeureConsultationPlan" ReturnType="Collection(MedAssistV2Model.selectHeureConsultationPlan_Result)">
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="IdMe" Mode="In" Type="Int32" />
+            <Parameter Name="IdM" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="selectMedecinCon" ReturnType="Collection(MedAssistV2Model.selectMedecinCon_Result)">
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="IdM" Mode="In" Type="Int32" />
+            <Parameter Name="IdS" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="selectMedecinPlan" ReturnType="Collection(MedAssistV2Model.selectMedecinPlan_Result)">
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="IdM" Mode="In" Type="Int32" />
+            <Parameter Name="IdS" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="AddRDVMode1">
+            <Parameter Name="IdPatient" Mode="In" Type="Int32" />
+            <Parameter Name="IdMedecin" Mode="In" Type="Int32" />
+            <Parameter Name="IdMaison" Mode="In" Type="Int32" />
+            <Parameter Name="IdSpecialite" Mode="In" Type="Int32" />
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="heure" Mode="In" Type="Time" />
+          </FunctionImport>
+          <FunctionImport Name="selectRDVPatientByPaHeDa" ReturnType="Collection(MedAssistV2Model.selectRDVPatientByPaHeDa_Result)">
+            <Parameter Name="idPatient" Mode="In" Type="Int32" />
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="heure" Mode="In" Type="Time" />
+          </FunctionImport>
+          <FunctionImport Name="selectHeureConsultationConsAp" ReturnType="Collection(MedAssistV2Model.selectHeureConsultationConsAp_Result)">
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="IdMe" Mode="In" Type="Int32" />
+            <Parameter Name="IdM" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="selectHeureConsultationConsMat" ReturnType="Collection(MedAssistV2Model.selectHeureConsultationConsMat_Result)">
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="IdMe" Mode="In" Type="Int32" />
+            <Parameter Name="IdM" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="selectMedecinByDateMaison" ReturnType="Collection(MedAssistV2Model.selectMedecinByDateMaison_Result)">
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="IdM" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="selectPatientRDV" ReturnType="Collection(MedAssistV2Model.selectPatientRDV_Result)">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateRDVMode1">
+            <Parameter Name="anHeure" Mode="In" Type="Time" />
+            <Parameter Name="idPlanninRDV" Mode="In" Type="Int32" />
+            <Parameter Name="idConsultation" Mode="In" Type="Int32" />
+            <Parameter Name="IdMedecin" Mode="In" Type="Int32" />
+            <Parameter Name="IdMaison" Mode="In" Type="Int32" />
+            <Parameter Name="IdSpecialite" Mode="In" Type="Int32" />
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="heure" Mode="In" Type="Time" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteRDVMode1">
+            <Parameter Name="anHeure" Mode="In" Type="Time" />
+            <Parameter Name="idPlanninRDV" Mode="In" Type="Int32" />
+            <Parameter Name="idConsultation" Mode="In" Type="Int32" />
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="idLocal" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="selectAllMedecin" ReturnType="Collection(MedAssistV2Model.selectAllMedecin_Result)" />
+          <FunctionImport Name="selectMaisonByMedecin" ReturnType="Collection(MedAssistV2Model.selectMaisonByMedecin_Result)">
+          <Parameter Name="idMedecin" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="selectSpecialiteByMaisonMedecin" ReturnType="Collection(MedAssistV2Model.selectSpecialiteByMaisonMedecin_Result)">
+            <Parameter Name="idMedecin" Mode="In" Type="Int32" />
+            <Parameter Name="idMaison" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="selectDatePresence" ReturnType="Collection(MedAssistV2Model.selectDatePresence_Result)">
+            <Parameter Name="idMedecin" Mode="In" Type="Int32" />
+            <Parameter Name="idMaison" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateRDVMode2">
+            <Parameter Name="anHeure" Mode="In" Type="Time" />
+            <Parameter Name="idPlanninRDV" Mode="In" Type="Int32" />
+            <Parameter Name="idConsultation" Mode="In" Type="Int32" />
+            <Parameter Name="IdMedecin" Mode="In" Type="Int32" />
+            <Parameter Name="IdMaison" Mode="In" Type="Int32" />
+            <Parameter Name="IdSpecialite" Mode="In" Type="Int32" />
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="heure" Mode="In" Type="Time" />
+            <Parameter Name="idPlanningMed" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="selectPatientRDVAndDate" ReturnType="Collection(MedAssistV2Model.selectPatientRDVAndDate_Result)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="AddRDVConfirmation">
+            <Parameter Name="idRDV" Mode="In" Type="Int32" />
+            <Parameter Name="idMedecin" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="selectPatientById_Result">
+          <Property Type="Int32" Name="IDPatient" Nullable="false" />
+          <Property Type="String" Name="Nom" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Prenom" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="DateDeNaissance" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="selectAllMaison_Result">
+          <Property Type="Int32" Name="IDMaisonM" Nullable="false" />
+          <Property Type="String" Name="Nom" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="selectSpecialiteMedecinByDate_Result">
+          <Property Type="Int32" Name="IDPlanningMED" Nullable="false" />
+          <Property Type="Int32" Name="IDSPecialite" Nullable="false" />
+          <Property Type="String" Name="Nom" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Nom1" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Prenom" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="IDMedecin" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="selectSpecialiteByDate_Result">
+          <Property Type="Int32" Name="IDSPecialite" Nullable="false" />
+          <Property Type="String" Name="Nom" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="selectHeureConsulation_Result">
+          <Property Type="DateTime" Name="JourDePressence" Nullable="false" />
+          <Property Type="Time" Name="DebutConsulation" Nullable="true" />
+          <Property Type="Time" Name="FinConsultation" Nullable="true" />
+          <Property Type="Time" Name="HeureDebutAprem" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="selectHeureConsultationCons_Result">
+          <Property Type="Int32" Name="IDPlanningMED" Nullable="false" />
+          <Property Type="Time" Name="DebutConsulation" Nullable="true" />
+          <Property Type="Time" Name="FinConsultation" Nullable="true" />
+          <Property Type="Time" Name="HeureDebutAprem" Nullable="false" />
+          <Property Type="Int32" Name="IDConsultation" Nullable="false" />
+          <Property Type="Time" Name="HeureDebutJournee" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="selectHeureConsultationPlan_Result">
+          <Property Type="Int32" Name="IDPlanningMED" Nullable="false" />
+          <Property Type="DateTime" Name="JourDePressence" Nullable="false" />
+          <Property Type="Time" Name="HeureDebutJournee" Nullable="false" />
+          <Property Type="Time" Name="HeureDebutAprem" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="selectMedecinCon_Result">
+          <Property Type="Int32" Name="IDMedecin" Nullable="false" />
+          <Property Type="String" Name="Nom" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="selectMedecinPlan_Result">
+          <Property Type="Int32" Name="IDMedecin" Nullable="false" />
+          <Property Type="String" Name="Nom" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="selectRDVPatientByPaHeDa_Result">
+          <Property Type="Int32" Name="IDPlanningRDV" Nullable="false" />
+          <Property Type="DateTime" Name="DateRDV" Nullable="false" />
+          <Property Type="Time" Name="HeureRDV" Nullable="true" />
+          <Property Type="Int32" Name="IDLocal" Nullable="false" />
+          <Property Type="String" Name="Nom" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="IDMedecin" Nullable="false" />
+          <Property Type="Int32" Name="IDMaisonM" Nullable="false" />
+          <Property Type="String" Name="Local" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Prenom_Medecin" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Maison" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="selectHeureConsultationConsAp_Result">
+          <Property Type="Int32" Name="IDPlanningMED" Nullable="false" />
+          <Property Type="Int32" Name="IDConsultation" Nullable="false" />
+          <Property Type="Time" Name="DebutConsulation" Nullable="true" />
+          <Property Type="Time" Name="FinConsultation" Nullable="true" />
+          <Property Type="Time" Name="HeureDebutJournee" Nullable="false" />
+          <Property Type="Time" Name="HeureDebutAprem" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="selectHeureConsultationConsMat_Result">
+          <Property Type="Int32" Name="IDPlanningMED" Nullable="false" />
+          <Property Type="Int32" Name="IDConsultation" Nullable="false" />
+          <Property Type="Time" Name="DebutConsulation" Nullable="true" />
+          <Property Type="Time" Name="FinConsultation" Nullable="true" />
+          <Property Type="Time" Name="HeureDebutJournee" Nullable="false" />
+          <Property Type="Time" Name="HeureDebutAprem" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="selectMedecinByDateMaison_Result">
+          <Property Type="Int32" Name="IDMedecin" Nullable="false" />
+          <Property Type="String" Name="Nom" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Prenom" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="selectPatientRDV_Result">
+          <Property Type="Int32" Name="IDPlanningRDV" Nullable="false" />
+          <Property Type="DateTime" Name="date" Nullable="false" />
+          <Property Type="Time" Name="heure" Nullable="true" />
+          <Property Type="Int32" Name="IDSPecialite" Nullable="false" />
+          <Property Type="Int32" Name="IDLocal" Nullable="false" />
+          <Property Type="Int32" Name="IDMaisonM" Nullable="false" />
+          <Property Type="String" Name="Specialite" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="local" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Maison" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Medecin" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="IDMedecin" Nullable="false" />
+          <Property Type="Int32" Name="IDConsultation" Nullable="false" />
+          </ComplexType>
+        <ComplexType Name="selectAllMedecin_Result">
+          <Property Type="Int32" Name="IDMedecin" Nullable="false" />
+          <Property Type="String" Name="Nom" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="selectMaisonByMedecin_Result">
+          <Property Type="Int32" Name="IDMaisonM" Nullable="false" />
+          <Property Type="String" Name="Nom" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="selectSpecialiteByMaisonMedecin_Result">
+          <Property Type="Int32" Name="IDSPecialite" Nullable="false" />
+          <Property Type="String" Name="Nom" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="selectDatePresence_Result">
+          <Property Type="Int32" Name="IDPlanningMED" Nullable="false" />
+          <Property Type="DateTime" Name="JourDePressence" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="selectPatientRDVAndDate_Result">
+          <Property Type="Int32" Name="IDPlanningRDV" Nullable="false" />
+          <Property Type="DateTime" Name="date" Nullable="false" />
+          <Property Type="Time" Name="heure" Nullable="true" />
+          <Property Type="Int32" Name="IDSPecialite" Nullable="false" />
+          <Property Type="String" Name="Specialite" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="IDLocal" Nullable="false" />
+          <Property Type="String" Name="local" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="IDMaisonM" Nullable="false" />
+          <Property Type="String" Name="Maison" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="IDMedecin" Nullable="false" />
+          <Property Type="String" Name="Medecin" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="IDConsultation" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MedAssistV2ModelStoreContainer" CdmEntityContainer="MedAssistV2Entities" >
+          <FunctionImportMapping FunctionImportName="selectPatientById" FunctionName="MedAssistV2Model.Store.selectPatientById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MedAssistV2Model.selectPatientById_Result">
+                <ScalarProperty Name="IDPatient" ColumnName="IDPatient" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+                <ScalarProperty Name="DateDeNaissance" ColumnName="DateDeNaissance" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="selectAllMaison" FunctionName="MedAssistV2Model.Store.selectAllMaison">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MedAssistV2Model.selectAllMaison_Result">
+                <ScalarProperty Name="IDMaisonM" ColumnName="IDMaisonM" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="selectSpecialiteMedecinByDate" FunctionName="MedAssistV2Model.Store.selectSpecialiteMedecinByDate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MedAssistV2Model.selectSpecialiteMedecinByDate_Result">
+                <ScalarProperty Name="IDPlanningMED" ColumnName="IDPlanningMED" />
+                <ScalarProperty Name="IDSPecialite" ColumnName="IDSPecialite" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Nom1" ColumnName="Nom1" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+                <ScalarProperty Name="IDMedecin" ColumnName="IDMedecin" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="selectSpecialiteByDate" FunctionName="MedAssistV2Model.Store.selectSpecialiteByDate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MedAssistV2Model.selectSpecialiteByDate_Result">
+                <ScalarProperty Name="IDSPecialite" ColumnName="IDSPecialite" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="selectHeureConsulation" FunctionName="MedAssistV2Model.Store.selectHeureConsulation">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MedAssistV2Model.selectHeureConsulation_Result">
+                <ScalarProperty Name="JourDePressence" ColumnName="JourDePressence" />
+                <ScalarProperty Name="DebutConsulation" ColumnName="DebutConsulation" />
+                <ScalarProperty Name="FinConsultation" ColumnName="FinConsultation" />
+                <ScalarProperty Name="HeureDebutAprem" ColumnName="HeureDebutAprem" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="selectHeureConsultationCons" FunctionName="MedAssistV2Model.Store.selectHeureConsultationCons">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MedAssistV2Model.selectHeureConsultationCons_Result">
+                <ScalarProperty Name="IDPlanningMED" ColumnName="IDPlanningMED" />
+                <ScalarProperty Name="DebutConsulation" ColumnName="DebutConsulation" />
+                <ScalarProperty Name="FinConsultation" ColumnName="FinConsultation" />
+                <ScalarProperty Name="HeureDebutAprem" ColumnName="HeureDebutAprem" />
+                <ScalarProperty Name="IDConsultation" ColumnName="IDConsultation" />
+                <ScalarProperty Name="HeureDebutJournee" ColumnName="HeureDebutJournee" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="selectHeureConsultationPlan" FunctionName="MedAssistV2Model.Store.selectHeureConsultationPlan">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MedAssistV2Model.selectHeureConsultationPlan_Result">
+                <ScalarProperty Name="IDPlanningMED" ColumnName="IDPlanningMED" />
+                <ScalarProperty Name="JourDePressence" ColumnName="JourDePressence" />
+                <ScalarProperty Name="HeureDebutJournee" ColumnName="HeureDebutJournee" />
+                <ScalarProperty Name="HeureDebutAprem" ColumnName="HeureDebutAprem" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="selectMedecinCon" FunctionName="MedAssistV2Model.Store.selectMedecinCon">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MedAssistV2Model.selectMedecinCon_Result">
+                <ScalarProperty Name="IDMedecin" ColumnName="IDMedecin" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="selectMedecinPlan" FunctionName="MedAssistV2Model.Store.selectMedecinPlan">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MedAssistV2Model.selectMedecinPlan_Result">
+                <ScalarProperty Name="IDMedecin" ColumnName="IDMedecin" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AddRDVMode1" FunctionName="MedAssistV2Model.Store.AddRDVMode1" />
+          <FunctionImportMapping FunctionImportName="selectRDVPatientByPaHeDa" FunctionName="MedAssistV2Model.Store.selectRDVPatientByPaHeDa">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MedAssistV2Model.selectRDVPatientByPaHeDa_Result">
+                <ScalarProperty Name="IDPlanningRDV" ColumnName="IDPlanningRDV" />
+                <ScalarProperty Name="DateRDV" ColumnName="DateRDV" />
+                <ScalarProperty Name="HeureRDV" ColumnName="HeureRDV" />
+                <ScalarProperty Name="IDLocal" ColumnName="IDLocal" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="IDMedecin" ColumnName="IDMedecin" />
+                <ScalarProperty Name="IDMaisonM" ColumnName="IDMaisonM" />
+                <ScalarProperty Name="Local" ColumnName="Local" />
+                <ScalarProperty Name="Prenom_Medecin" ColumnName="Prenom_Medecin" />
+                <ScalarProperty Name="Maison" ColumnName="Maison" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="selectHeureConsultationConsAp" FunctionName="MedAssistV2Model.Store.selectHeureConsultationConsAp">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MedAssistV2Model.selectHeureConsultationConsAp_Result">
+                <ScalarProperty Name="IDPlanningMED" ColumnName="IDPlanningMED" />
+                <ScalarProperty Name="IDConsultation" ColumnName="IDConsultation" />
+                <ScalarProperty Name="DebutConsulation" ColumnName="DebutConsulation" />
+                <ScalarProperty Name="FinConsultation" ColumnName="FinConsultation" />
+                <ScalarProperty Name="HeureDebutJournee" ColumnName="HeureDebutJournee" />
+                <ScalarProperty Name="HeureDebutAprem" ColumnName="HeureDebutAprem" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="selectHeureConsultationConsMat" FunctionName="MedAssistV2Model.Store.selectHeureConsultationConsMat">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MedAssistV2Model.selectHeureConsultationConsMat_Result">
+                <ScalarProperty Name="IDPlanningMED" ColumnName="IDPlanningMED" />
+                <ScalarProperty Name="IDConsultation" ColumnName="IDConsultation" />
+                <ScalarProperty Name="DebutConsulation" ColumnName="DebutConsulation" />
+                <ScalarProperty Name="FinConsultation" ColumnName="FinConsultation" />
+                <ScalarProperty Name="HeureDebutJournee" ColumnName="HeureDebutJournee" />
+                <ScalarProperty Name="HeureDebutAprem" ColumnName="HeureDebutAprem" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="selectMedecinByDateMaison" FunctionName="MedAssistV2Model.Store.selectMedecinByDateMaison">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MedAssistV2Model.selectMedecinByDateMaison_Result">
+                <ScalarProperty Name="IDMedecin" ColumnName="IDMedecin" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="selectPatientRDV" FunctionName="MedAssistV2Model.Store.selectPatientRDV">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MedAssistV2Model.selectPatientRDV_Result">
+                <ScalarProperty Name="IDPlanningRDV" ColumnName="IDPlanningRDV" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="heure" ColumnName="heure" />
+                <ScalarProperty Name="IDSPecialite" ColumnName="IDSPecialite" />
+                <ScalarProperty Name="IDLocal" ColumnName="IDLocal" />
+                <ScalarProperty Name="IDMaisonM" ColumnName="IDMaisonM" />
+                <ScalarProperty Name="Specialite" ColumnName="Specialite" />
+                <ScalarProperty Name="local" ColumnName="local" />
+                <ScalarProperty Name="Maison" ColumnName="Maison" />
+                <ScalarProperty Name="Medecin" ColumnName="Medecin" />
+                <ScalarProperty Name="IDMedecin" ColumnName="IDMedecin" />
+                <ScalarProperty Name="IDConsultation" ColumnName="IDConsultation" />
+                </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UpdateRDVMode1" FunctionName="MedAssistV2Model.Store.UpdateRDVMode1" />
+          <FunctionImportMapping FunctionImportName="DeleteRDVMode1" FunctionName="MedAssistV2Model.Store.DeleteRDVMode1" />
+          <FunctionImportMapping FunctionImportName="selectAllMedecin" FunctionName="MedAssistV2Model.Store.selectAllMedecin">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MedAssistV2Model.selectAllMedecin_Result">
+                <ScalarProperty Name="IDMedecin" ColumnName="IDMedecin" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="selectMaisonByMedecin" FunctionName="MedAssistV2Model.Store.selectMaisonByMedecin">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MedAssistV2Model.selectMaisonByMedecin_Result">
+                <ScalarProperty Name="IDMaisonM" ColumnName="IDMaisonM" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="selectSpecialiteByMaisonMedecin" FunctionName="MedAssistV2Model.Store.selectSpecialiteByMaisonMedecin">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MedAssistV2Model.selectSpecialiteByMaisonMedecin_Result">
+                <ScalarProperty Name="IDSPecialite" ColumnName="IDSPecialite" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="selectDatePresence" FunctionName="MedAssistV2Model.Store.selectDatePresence">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MedAssistV2Model.selectDatePresence_Result">
+                <ScalarProperty Name="IDPlanningMED" ColumnName="IDPlanningMED" />
+                <ScalarProperty Name="JourDePressence" ColumnName="JourDePressence" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UpdateRDVMode2" FunctionName="MedAssistV2Model.Store.UpdateRDVMode2" />
+          <FunctionImportMapping FunctionImportName="selectPatientRDVAndDate" FunctionName="MedAssistV2Model.Store.selectPatientRDVAndDate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MedAssistV2Model.selectPatientRDVAndDate_Result">
+                <ScalarProperty Name="IDPlanningRDV" ColumnName="IDPlanningRDV" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="heure" ColumnName="heure" />
+                <ScalarProperty Name="IDSPecialite" ColumnName="IDSPecialite" />
+                <ScalarProperty Name="Specialite" ColumnName="Specialite" />
+                <ScalarProperty Name="IDLocal" ColumnName="IDLocal" />
+                <ScalarProperty Name="local" ColumnName="local" />
+                <ScalarProperty Name="IDMaisonM" ColumnName="IDMaisonM" />
+                <ScalarProperty Name="Maison" ColumnName="Maison" />
+                <ScalarProperty Name="IDMedecin" ColumnName="IDMedecin" />
+                <ScalarProperty Name="Medecin" ColumnName="Medecin" />
+                <ScalarProperty Name="IDConsultation" ColumnName="IDConsultation" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AddRDVConfirmation" FunctionName="MedAssistV2Model.Store.AddRDVConfirmation" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
